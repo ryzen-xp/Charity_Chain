@@ -301,7 +301,7 @@ export default function Requests({
             </Box>
             <Spacer />
             <Box py="4">
-              Campaign Balance :{" "}
+              NGO Balance :{" "}
               <Text as="span" fontWeight={"bold"} fontSize="lg">
                 {balance > 0
                   ? web3.utils.fromWei(balance, "ether")

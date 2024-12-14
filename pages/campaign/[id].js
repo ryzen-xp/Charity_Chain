@@ -230,7 +230,7 @@ export default function CampaignSingle({
                     }
                   />
                   <StatsCard
-                    title={"Wallet Address of Campaign Creator"}
+                    title={"Wallet Address of NGO Creator"}
                     stat={manager}
                     info={
                       "The Campaign Creator created the campaign and can create requests to withdraw money."
@@ -265,7 +265,7 @@ export default function CampaignSingle({
                   <StatLabel fontWeight={"medium"}>
                     <Text as="span" isTruncated mr={2}>
                       {" "}
-                      Campaign Balance
+                      NGO Balance
                     </Text>
                     <Tooltip
                       label="The balance is how much money this campaign has left to
