@@ -157,7 +157,7 @@ function CampaignCard({
                 <Text as="span" fontWeight={"bold"}>
                   {balance > 0
                     ? web3.utils.fromWei(balance, "ether")
-                    : "0, Become a Donor 😄"}
+                    : "0, Become a Donor "}
                 </Text>
                 <Text
                   as="span"
@@ -179,7 +179,7 @@ function CampaignCard({
                 </Text>
               </Box>
 
-              <Text fontSize={"md"} fontWeight="normal">
+              {/* <Text fontSize={"md"} fontWeight="normal">
                 target of {web3.utils.fromWei(target, "ether")} ETH ($
                 {getWEIPriceInUSD(ethPrice, target)})
               </Text>
@@ -189,7 +189,7 @@ function CampaignCard({
                 value={web3.utils.fromWei(balance, "ether")}
                 max={web3.utils.fromWei(target, "ether")}
                 mt="2"
-              />
+              /> */}
             </Box>{" "}
           </Flex>
         </Box>

@@ -217,7 +217,7 @@ export default function CampaignSingle({
               <Box mx={"auto"} w={"full"}>
                 <SimpleGrid columns={{ base: 1 }} spacing={{ base: 5 }}>
                   <StatsCard
-                    title={"Minimum Contribution"}
+                    title={"Minimum Contribution to become Approver"}
                     stat={`${web3.utils.fromWei(
                       minimumContribution,
                       "ether"
@@ -313,7 +313,7 @@ export default function CampaignSingle({
                       </Text>
                     </Box>
 
-                    <Text fontSize={"md"} fontWeight="normal">
+                    {/* <Text fontSize={"md"} fontWeight="normal">
                       target of {web3.utils.fromWei(target, "ether")} ETH ($
                       {getWEIPriceInUSD(ETHPrice, target)})
                     </Text>
@@ -323,7 +323,7 @@ export default function CampaignSingle({
                       value={web3.utils.fromWei(balance, "ether")}
                       max={web3.utils.fromWei(target, "ether")}
                       mt={4}
-                    />
+                    /> */}
                   </StatNumber>
                 </Stat>
               </Box>
@@ -377,7 +377,7 @@ export default function CampaignSingle({
                     ) : null}
 
                     <Stack spacing={10}>
-                      {wallet.status === "connected" ? (
+                      {wallet.status != "connected" ? (
                         <Button
                           fontFamily={"heading"}
                           mt={4}
