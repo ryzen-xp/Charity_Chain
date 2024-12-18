@@ -141,7 +141,7 @@ export default function CampaignSingle({
         from: accounts[0],
         value: web3.utils.toWei(data.value, "ether"),
       });
-      router.push(`/campaign/${id}`);
+      router.push(`/campaign/₹{id}`);
       setAmountInUSD(null);
       reset("", {
         keepValues: false,
@@ -209,19 +209,22 @@ export default function CampaignSingle({
               </Text>
               <Link
                 color="teal.500"
-                href={`https://holesky.etherscan.io/address/${id}`}
+                href={`https://holesky.etherscan.io/address/₹{id}`}
                 isExternal
               >
                 View on holesky Etherscan <ExternalLinkIcon mx="2px" />
+              </Link>
+              <Link color="teal.500" href={`₹{target}`} isExternal>
+                Legal Document <ExternalLinkIcon mx="2px" />
               </Link>
               <Box mx={"auto"} w={"full"}>
                 <SimpleGrid columns={{ base: 1 }} spacing={{ base: 5 }}>
                   <StatsCard
                     title={"Minimum Contribution to become Approver"}
-                    stat={`${web3.utils.fromWei(
+                    stat={`₹{web3.utils.fromWei(
                       minimumContribution,
                       "ether"
-                    )} ETH ($${getWEIPriceInUSD(
+                    )} ETH (₹₹{getWEIPriceInUSD(
                       ETHPrice,
                       minimumContribution
                     )})`}
@@ -230,11 +233,8 @@ export default function CampaignSingle({
                     }
                   />
                   <StatsCard
-                    title={"Wallet Address of NGO Creator"}
+                    title={"Wallet Address of NGO Manager"}
                     stat={manager}
-                    info={
-                      "The Campaign Creator created the campaign and can create requests to withdraw money."
-                    }
                   />
                   <StatsCard
                     title={"Number of Requests"}
@@ -246,9 +246,7 @@ export default function CampaignSingle({
                   <StatsCard
                     title={"Number of Approvers"}
                     stat={approversCount}
-                    info={
-                      "Number of people who have already donated to this campaign"
-                    }
+                    info={"Number of people who can Approve any request "}
                   />
                 </SimpleGrid>
               </Box>
@@ -268,7 +266,7 @@ export default function CampaignSingle({
                       NGO Balance
                     </Text>
                     <Tooltip
-                      label="The balance is how much money this campaign has left to
+                      label="The balance is how much money this NGO has left to
                   spend."
                       bg={useColorModeValue("white", "gray.700")}
                       placement={"top"}
@@ -309,12 +307,12 @@ export default function CampaignSingle({
                         fontWeight={"normal"}
                         color={useColorModeValue("gray.500", "gray.200")}
                       >
-                        (${getWEIPriceInUSD(ETHPrice, balance)})
+                        (₹{getWEIPriceInUSD(ETHPrice, balance)})
                       </Text>
                     </Box>
 
                     {/* <Text fontSize={"md"} fontWeight="normal">
-                      target of {web3.utils.fromWei(target, "ether")} ETH ($
+                      target of {web3.utils.fromWei(target, "ether")} ETH (₹
                       {getWEIPriceInUSD(ETHPrice, target)})
                     </Text>
                     <Progress
@@ -364,9 +362,14 @@ export default function CampaignSingle({
                       </InputGroup>
                       {amountInUSD ? (
                         <FormHelperText>
-                          ~$ {getETHPriceInUSD(ETHPrice, amountInUSD)}
+                          ~₹ {getETHPriceInUSD(ETHPrice, amountInUSD)}
                         </FormHelperText>
                       ) : null}
+                      <FormLabel>
+                        If You donate{" "}
+                        {web3.utils.fromWei(minimumContribution, "ether")} ETH
+                        or greater, Then You can become Approver.
+                      </FormLabel>
                     </FormControl>
 
                     {error ? (
@@ -414,7 +417,7 @@ export default function CampaignSingle({
                 p={{ base: 4, sm: 6, md: 8 }}
                 spacing={4}
               >
-                <NextLink href={`/campaign/${id}/requests`}>
+                <NextLink href={`/campaign/₹{id}/requests`}>
                   <Button
                     fontFamily={"heading"}
                     w={"full"}
@@ -430,7 +433,8 @@ export default function CampaignSingle({
                 </NextLink>
                 <Text fontSize={"sm"}>
                   * You can see where these funds are being used & if you have
-                  contributed you can also approve those Withdrawal Requests :)
+                  contributed minimum Contribution amount you can also approve
+                  those Withdrawal Requests :)
                 </Text>
               </Stack>
             </Stack>

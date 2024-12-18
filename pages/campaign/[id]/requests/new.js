@@ -64,7 +64,7 @@ export default function NewRequest() {
         )
         .send({ from: accounts[0] });
 
-      router.push(`/campaign/${id}/requests`);
+      router.push(`/campaign/₹{id}/requests`);
     } catch (err) {
       setError(err.message);
       console.log(err);
@@ -82,7 +82,7 @@ export default function NewRequest() {
         <Stack spacing={8} mx={"auto"} maxW={"2xl"} py={12} px={6}>
           <Text fontSize={"lg"} color={"teal.400"} justifyContent="center">
             <ArrowBackIcon mr={2} />
-            <NextLink href={`/campaign/${id}/requests`}>
+            <NextLink href={`/campaign/₹{id}/requests`}>
               Back to Requests
             </NextLink>
           </Text>
@@ -121,7 +121,7 @@ export default function NewRequest() {
                   </InputGroup>
                   {inUSD ? (
                     <FormHelperText>
-                      ~$ {getETHPriceInUSD(ETHPrice, inUSD)}
+                      ~₹ {getETHPriceInUSD(ETHPrice, inUSD)}
                     </FormHelperText>
                   ) : null}
                 </FormControl>

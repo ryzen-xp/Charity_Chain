@@ -3,7 +3,7 @@ pragma solidity ^0.4.17;
 contract CampaignFactory {
     address[] public deployedCampaigns;
 
-    function createCampaign(uint minimum,string name,string description,string image,uint target) public {
+    function createCampaign(uint minimum,string name,string description,string image,string target) public {
         address newCampaign = new Campaign(minimum, msg.sender,name,description,image,target);
         deployedCampaigns.push(newCampaign);
     }
@@ -30,8 +30,9 @@ contract Campaign {
   string public CampaignName;
   string public CampaignDescription;
   string public imageUrl;
-  uint public targetToAchieve;
+  string public targetToAchieve;
   address[] public contributers;
+   mapping(address => uint) public dontaion ;
   mapping(address => bool) public approvers;
   uint public approversCount;
 
@@ -41,7 +42,7 @@ contract Campaign {
       _;
   }
 
-  function Campaign(uint minimun, address creator,string name,string description,string image,uint target) public {
+  function Campaign(uint minimun, address creator,string name,string description,string image,string target) public {
       manager = creator;
       minimunContribution = minimun;
       CampaignName=name;
@@ -51,11 +52,13 @@ contract Campaign {
   }
 
   function contibute() public payable {
-      require(msg.value > minimunContribution );
-
-      contributers.push(msg.sender);
+      require(msg.value > 0  );
+    contributers.push(msg.sender);
+      dontaion[msg.sender]+=msg.value ;
+      if( dontaion[msg.sender] > minimunContribution ){
       approvers[msg.sender] = true;
       approversCount++;
+      }
   }
 
   function createRequest(string description, uint value, address recipient) public restricted {
@@ -88,7 +91,7 @@ contract Campaign {
   }
 
 
-    function getSummary() public view returns (uint,uint,uint,uint,address,string,string,string,uint) {
+    function getSummary() public view returns (uint,uint,uint,uint,address,string,string,string,string) {
         return(
             minimunContribution,
             this.balance,

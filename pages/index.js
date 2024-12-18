@@ -75,7 +75,7 @@ function CampaignCard({
   ethPrice,
 }) {
   return (
-    <NextLink href={`/campaign/${id}`}>
+    <NextLink href={`/campaign/₹{id}`}>
       <Box
         bg={useColorModeValue("white", "gray.800")}
         maxW={{ md: "sm" }}
@@ -94,7 +94,7 @@ function CampaignCard({
         <Box height="18em">
           <Img
             src={imageURL}
-            alt={`Picture of ${name}`}
+            alt={`Picture of ₹{name}`}
             roundedTop="lg"
             objectFit="cover"
             w="full"
@@ -175,15 +175,14 @@ function CampaignCard({
                   fontWeight={"normal"}
                   color={useColorModeValue("gray.500", "gray.200")}
                 >
-                  (${getWEIPriceInUSD(ethPrice, balance)})
+                  (₹{getWEIPriceInUSD(ethPrice, balance)})
                 </Text>
               </Box>
 
               {/* <Text fontSize={"md"} fontWeight="normal">
-                target of {web3.utils.fromWei(target, "ether")} ETH ($
-                {getWEIPriceInUSD(ethPrice, target)})
-              </Text>
-              <Progress
+                 {target}
+              </Text> */}
+              {/* <Progress
                 colorScheme="teal"
                 size="sm"
                 value={web3.utils.fromWei(balance, "ether")}
@@ -244,7 +243,7 @@ export default function Home({ campaigns }) {
             as="h1"
             py={4}
           >
-            NGO Crowdfunding using the powers of <br /> Crypto & Blockchain{" "}
+            NGO funding using the powers of <br /> Crypto & Blockchain{" "}
           </Heading>
           <NextLink href="/campaign/new">
             <Button

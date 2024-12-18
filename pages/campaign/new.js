@@ -116,7 +116,7 @@ export default function NewCampaign() {
           data.campaignName,
           data.description,
           data.imageUrl,
-          web3.utils.toWei(data.target, "ether")
+          data.target
         )
         .send({
           from: accounts[0],
@@ -154,7 +154,9 @@ export default function NewCampaign() {
             <form onSubmit={handleSubmit(onSubmit)}>
               <Stack spacing={4}>
                 <FormControl id="minimumContribution">
-                  <FormLabel>Minimum Contribution Amount</FormLabel>
+                  <FormLabel>
+                    Minimum Contribution Amount to become Approver
+                  </FormLabel>
                   <InputGroup>
                     <Input
                       type="number"
@@ -169,7 +171,7 @@ export default function NewCampaign() {
                   </InputGroup>
                   {minContriInUSD ? (
                     <FormHelperText>
-                      ~$ {getETHPriceInUSD(ETHPrice, minContriInUSD)}
+                      ~₹ {getETHPriceInUSD(ETHPrice, minContriInUSD)}
                     </FormHelperText>
                   ) : null}
                 </FormControl>
@@ -196,26 +198,26 @@ export default function NewCampaign() {
                   />
                 </FormControl>
                 <FormControl>
-                  <FormLabel>NGO website URL || Lic. Document link</FormLabel>
+                  <FormLabel>Website link (optional)</FormLabel>
                   <Input />
                 </FormControl>
                 <FormControl id="target">
-                  <FormLabel>Target Amount</FormLabel>
+                  <FormLabel>Legal Document link</FormLabel>
                   <InputGroup>
                     <Input
-                      type="number"
+                      type="url"
                       step="any"
-                      {...register("target", { required: true })}
+                      {...register("target", { required: false })}
                       isDisabled={isSubmitting}
-                      onChange={(e) => {
-                        setTargetInUSD(Math.abs(e.target.value));
-                      }}
+                      // onChange={(e) => {
+                      //   setTargetInUSD(Math.abs(e.target.value));
+                      // }}
                     />
-                    <InputRightAddon children="ETH" />
+                    {/* <InputRightAddon children="ETH" /> */}
                   </InputGroup>
                   {targetInUSD ? (
                     <FormHelperText>
-                      ~$ {getETHPriceInUSD(ETHPrice, targetInUSD)}
+                      ~₹ {getETHPriceInUSD(ETHPrice, targetInUSD)}
                     </FormHelperText>
                   ) : null}
                 </FormControl>

@@ -119,13 +119,13 @@ const RequestRow = ({
       <Td>{id} </Td>
       <Td>{request.description}</Td>
       <Td isNumeric>
-        {web3.utils.fromWei(request.value, "ether")}ETH ($
+        {web3.utils.fromWei(request.value, "ether")}ETH (₹
         {getWEIPriceInUSD(ETHPrice, request.value)})
       </Td>
       <Td>
         <Link
           color="teal.500"
-          href={`https://holesky.etherscan.io/address/${request.recipient}`}
+          href={`https://holesky.etherscan.io/address/₹{request.recipient}`}
           isExternal
         >
           {" "}
@@ -283,7 +283,7 @@ export default function Requests({
   return (
     <div>
       <Head>
-        <title>Campaign Withdrawal Requests</title>
+        <title>NGO Withdrawal Requests</title>
         <meta name="description" content="Create a Withdrawal Request" />
         <link rel="icon" href="/logo.svg" />
       </Head>
@@ -294,8 +294,8 @@ export default function Requests({
             <Box py="4">
               <Text fontSize={"lg"} color={"teal.400"}>
                 <ArrowBackIcon mr={2} />
-                <NextLink href={`/campaign/${campaignId}`}>
-                  Back to Campaign
+                <NextLink href={`/campaign/₹{campaignId}`}>
+                  Back to NGO dashboard
                 </NextLink>
               </Text>
             </Box>
@@ -323,7 +323,7 @@ export default function Requests({
                 fontWeight={"normal"}
                 color={useColorModeValue("gray.500", "gray.200")}
               >
-                (${getWEIPriceInUSD(ETHPrice, balance)})
+                (₹{getWEIPriceInUSD(ETHPrice, balance)})
               </Text>
             </Box>
           </Flex>
@@ -331,7 +331,7 @@ export default function Requests({
             <Alert status="error" my={4}>
               <AlertIcon />
               <AlertDescription>
-                The Current Balance of the Campaign is 0, Please Contribute to
+                The Current Balance of the NGO is 0, Please Contribute to
                 approve and finalize Requests.
               </AlertDescription>
             </Alert>
@@ -349,12 +349,12 @@ export default function Requests({
                   isTruncated
                   maxW={"3xl"}
                 >
-                  Withdrawal Requests for {name} Campaign
+                  Withdrawal Requests for {name}
                 </Heading>
               </Box>
               <Spacer />
               <Box py="2">
-                <NextLink href={`/campaign/${campaignId}/requests/new`}>
+                <NextLink href={`/campaign/₹{campaignId}/requests/new`}>
                   <Button
                     display={{ sm: "inline-flex" }}
                     justify={"flex-end"}
@@ -377,7 +377,7 @@ export default function Requests({
                 <Thead>
                   <Tr>
                     <Th>ID</Th>
-                    <Th w="30%">Description</Th>
+                    <Th w="30%">Campaign's Name</Th>
                     <Th isNumeric>Amount</Th>
                     <Th maxW="12%" isTruncated>
                       Recipient Wallet Address
@@ -452,8 +452,7 @@ export default function Requests({
                   color={useColorModeValue("gray.600", "gray.300")}
                   fontSize="sm"
                 >
-                  Create a Withdrawal Request to Withdraw funds from the
-                  Campaign😄
+                  Create a Withdrawal Request to Withdraw funds from the NGO
                 </Text>
 
                 <Button
@@ -465,7 +464,7 @@ export default function Requests({
                     bg: "teal.300",
                   }}
                 >
-                  <NextLink href={`/campaign/${campaignId}/requests/new`}>
+                  <NextLink href={`/campaign/₹{campaignId}/requests/new`}>
                     Create Withdrawal Request
                   </NextLink>
                 </Button>
@@ -479,8 +478,8 @@ export default function Requests({
                     bg: "gray.300",
                   }}
                 >
-                  <NextLink href={`/campaign/${campaignId}/`}>
-                    Go to Campaign
+                  <NextLink href={`/campaign/₹{campaignId}/`}>
+                    Go to NGO
                   </NextLink>
                 </Button>
               </SimpleGrid>
