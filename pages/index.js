@@ -75,7 +75,7 @@ function CampaignCard({
   ethPrice,
 }) {
   return (
-    <NextLink href={`/campaign/₹{id}`}>
+    <NextLink href={`/campaign/${id}`}>
       <Box
         bg={useColorModeValue("white", "gray.800")}
         maxW={{ md: "sm" }}

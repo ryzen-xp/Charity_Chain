@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
           connectors={{
             walletconnect: {
               rpcUrl:
-                "https://holesky.infura.io/v3/21266fb86e1443869b2bd28f2180a25c",
+                "https://cosmopolitan-aged-sheet.ethereum-holesky.quiknode.pro/2a12865ff1286d28da3870c2fb6ed7275b43ad3b/",
             },
           }}
         >

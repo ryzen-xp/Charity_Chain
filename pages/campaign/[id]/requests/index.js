@@ -125,7 +125,7 @@ const RequestRow = ({
       <Td>
         <Link
           color="teal.500"
-          href={`https://holesky.etherscan.io/address/₹{request.recipient}`}
+          href={`https://holesky.etherscan.io/address/${request.recipient}`}
           isExternal
         >
           {" "}
@@ -294,7 +294,7 @@ export default function Requests({
             <Box py="4">
               <Text fontSize={"lg"} color={"teal.400"}>
                 <ArrowBackIcon mr={2} />
-                <NextLink href={`/campaign/₹{campaignId}`}>
+                <NextLink href={`/campaign/${campaignId}`}>
                   Back to NGO dashboard
                 </NextLink>
               </Text>
@@ -354,7 +354,7 @@ export default function Requests({
               </Box>
               <Spacer />
               <Box py="2">
-                <NextLink href={`/campaign/₹{campaignId}/requests/new`}>
+                <NextLink href={`/campaign/${campaignId}/requests/new`}>
                   <Button
                     display={{ sm: "inline-flex" }}
                     justify={"flex-end"}
@@ -464,7 +464,7 @@ export default function Requests({
                     bg: "teal.300",
                   }}
                 >
-                  <NextLink href={`/campaign/₹{campaignId}/requests/new`}>
+                  <NextLink href={`/campaign/${campaignId}/requests/new`}>
                     Create Withdrawal Request
                   </NextLink>
                 </Button>
@@ -478,7 +478,7 @@ export default function Requests({
                     bg: "gray.300",
                   }}
                 >
-                  <NextLink href={`/campaign/₹{campaignId}/`}>
+                  <NextLink href={`/campaign/${campaignId}/`}>
                     Go to NGO
                   </NextLink>
                 </Button>
