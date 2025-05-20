@@ -141,7 +141,7 @@ export default function CampaignSingle({
         from: accounts[0],
         value: web3.utils.toWei(data.value, "ether"),
       });
-      router.push(`/campaign/₹{id}`);
+      router.push(`/campaign/${id}`);
       setAmountInUSD(null);
       reset("", {
         keepValues: false,
@@ -209,22 +209,22 @@ export default function CampaignSingle({
               </Text>
               <Link
                 color="teal.500"
-                href={`https://holesky.etherscan.io/address/₹{id}`}
+                href={`https://holesky.etherscan.io/address/${id}`}
                 isExternal
               >
                 View on holesky Etherscan <ExternalLinkIcon mx="2px" />
               </Link>
-              <Link color="teal.500" href={`₹{target}`} isExternal>
+              <Link color="teal.500" href={`${target}`} isExternal>
                 Legal Document <ExternalLinkIcon mx="2px" />
               </Link>
               <Box mx={"auto"} w={"full"}>
                 <SimpleGrid columns={{ base: 1 }} spacing={{ base: 5 }}>
                   <StatsCard
                     title={"Minimum Contribution to become Approver"}
-                    stat={`₹{web3.utils.fromWei(
+                    stat={`${web3.utils.fromWei(
                       minimumContribution,
                       "ether"
-                    )} ETH (₹₹{getWEIPriceInUSD(
+                    )} ETH (${getWEIPriceInUSD(
                       ETHPrice,
                       minimumContribution
                     )})`}
@@ -312,7 +312,7 @@ export default function CampaignSingle({
                     </Box>
 
                     {/* <Text fontSize={"md"} fontWeight="normal">
-                      target of {web3.utils.fromWei(target, "ether")} ETH (₹
+                      target of {web3.utils.fromWei(target, "ether")} ETH ($
                       {getWEIPriceInUSD(ETHPrice, target)})
                     </Text>
                     <Progress
@@ -417,7 +417,7 @@ export default function CampaignSingle({
                 p={{ base: 4, sm: 6, md: 8 }}
                 spacing={4}
               >
-                <NextLink href={`/campaign/₹{id}/requests`}>
+                <NextLink href={`/campaign/${id}/requests`}>
                   <Button
                     fontFamily={"heading"}
                     w={"full"}
